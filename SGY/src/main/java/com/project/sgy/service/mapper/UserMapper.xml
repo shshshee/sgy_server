@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserDAO">
+
+	<!-- 회원 리스트 test -->
+	<resultMap type="com.project.sgy.vo.User_InfoVO" id="userList">
+		<id property="ui_id" column="ui_id"/>
+		<id property="ui_pw" column="ui_pw"/>
+		<id property="ui_phone" column="ui_phone"/>
+	</resultMap>
+  
+	<!-- select문 -->
+	
+	<!-- testtesttesttesttest -->
+	<select id="selectUserList" resultMap="userList">
+		select *
+		from user_info
+	</select>
+	
+	<!-- 로그인 (임시로 해놓음)  -->
+	<select id="LoginCheck" parameterType="com.project.sgy.vo.User_InfoVO" resultMap="userList">
+		select ui_id, ui_pw ,ui_phone
+		from user_info 
+		where ui_id = #{ui_id}
+	</select> 
+	
+	<!-- update문 -->
+
+	<!-- insert문 -->
+
+	<!-- delete문 -->
+</mapper>
