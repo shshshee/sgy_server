@@ -29,4 +29,9 @@ public class UserDAOImpl implements UserDAO {
 	public User_InfoVO LoginCheck(User_InfoVO user) {
 		return sqlSession.selectOne(this.queryprefix+"selectUserList",user);
 	}
+	
+	@Override
+	public int insertUser(User_InfoVO user) {
+		return sqlSession.insert(this.queryprefix+"insertUser",user);
+	}
 }

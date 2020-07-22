@@ -22,4 +22,9 @@ public class UserService {
 	public User_InfoVO LoginCheck(User_InfoVO user) {
 		return udao.LoginCheck(user);
 	}
+	
+	//회원가입
+	public int insertUser(User_InfoVO user) {
+		return udao.insertUser(user);
+	}
 }

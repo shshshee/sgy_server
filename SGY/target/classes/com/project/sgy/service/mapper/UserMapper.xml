@@ -27,6 +27,14 @@
 	<!-- update문 -->
 
 	<!-- insert문 -->
+	<!-- 회원가입  -->
+	<insert id="insertUser" parameterType="com.project.sgy.vo.User_InfoVO">
+		insert into user_info (ui_id, ui_pw, ui_phone)
+		values (
+			#{ ui_id }, #{ ui_pw }, #{ ui_phone }
+		)
+	
+	</insert>
 
 	<!-- delete문 -->
 </mapper>

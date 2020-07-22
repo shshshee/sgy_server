@@ -40,9 +40,11 @@ public class UserController {
 	@PostMapping("/login")
 	public int loginCheck(@RequestBody User_InfoVO user, HttpSession session) {
 		
+		//로그인 객체 가져오기
 		User_InfoVO userlogin = uService.LoginCheck(user);
 		
 		if(userlogin != null) {
+			//아이디가 존재한다면 -> 비밀번호 비교 
 			if(bcryptPE.matches(user.getUi_pw(), userlogin.getUi_pw())) {
 				session.setAttribute("ui_id", userlogin);
 				System.out.println("ui_id=>"+userlogin.getUi_id());
@@ -51,9 +53,24 @@ public class UserController {
 				return 0;
 			}
 		}else {
+			//아이디가 존재하지 않을 때
 			return -1;
 		}
 		
+	}
+	
+	//회원가입
+	@RequestMapping(value="/signup", method=RequestMethod.POST)
+	public int signup(@RequestBody User_InfoVO user) {
+		//중복체크는 아직 X -> 있어야할까 ? 
+		
+		//비밀번호 암호화
+		String encodePassword = bcryptPE.encode(user.getUi_pw()); 
+		user.setUi_pw(encodePassword);
+		
+		int result = uService.insertUser(user);
+		
+		return result;
 	}
 	
 }

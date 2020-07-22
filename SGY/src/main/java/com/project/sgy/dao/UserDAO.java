@@ -11,4 +11,7 @@ public interface UserDAO {
 	
 	/* 로그인 test */
 	User_InfoVO LoginCheck(User_InfoVO user);
+	
+	/* 회원가입  */
+	int insertUser(User_InfoVO user);
 }
